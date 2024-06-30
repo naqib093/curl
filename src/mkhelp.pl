@@ -298,14 +298,9 @@ void showhelp(const char *arg, const char *endarg)
   struct scan_ctx ctx;
   initscan(&ctx, arg, endarg);
   while(curlman[i]) {
-    char buffer[120];
     size_t len = strlen(curlman[i]);
-    if(len >= sizeof(buffer) -1 )
-      exit(1); /* bad */
-    memcpy(buffer, curlman[i], len);
-    buffer[len] = '\\n';
-    buffer[len + 1] = 0;
-    if(!scanfor((unsigned char *)buffer, len+1, &ctx))
+    if(!scanfor((unsigned char *)curlman[i], len, &ctx) ||
+       !scanfor((unsigned char *)"\\n", 1, &ctx))
       break;
     i++;
   }
