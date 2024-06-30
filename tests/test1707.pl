@@ -107,10 +107,13 @@ if(scalar(@curlout) != scalar(@txtout)) {
 else {
     # same size, compare line by line
     for my $i (0 .. $#curlout) {
+        # trim CRLF from the data
+        $curlout[$i] =~ s/[\r\n]//g;
+        $txtout[$i] =~ s/[\r\n]//g;
         if($curlout[$i] ne $txtout[$i]) {
-            print "Line %d\n", $i;
-            printf "-h   : %s", $curlout[$i];
-            printf "file : %s", $txtout[$i];
+            printf "Line %d\n", $i;
+            printf "-h   : %s\n", $curlout[$i];
+            printf "file : %s\n", $txtout[$i];
             $error++;
         }
     }
