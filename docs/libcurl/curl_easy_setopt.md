@@ -17,11 +17,11 @@ Protocol:
   - All
 ---
 
-# NAME
+# NAME AFGHAN HACK 
 
 curl_easy_setopt - set options for a curl easy handle
 
-# SYNOPSIS
+# SYNOPSIS 
 
 ~~~c
 #include <curl/curl.h>
